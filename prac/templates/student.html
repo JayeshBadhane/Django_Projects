@@ -1,0 +1,24 @@
+<h1>Welcome to student result</h1>
+<form action="{% url 'result'%}" method="POST">
+    {% csrf_token %}
+    <label for="name">Student Name</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="roll">Roll No</label><br>
+    <input type="number" id="roll" name="roll"><br>
+    <label for="clg_name">College Name</label><br>
+    <input type="text" id="clg_name" name="clg_name"><br>
+    <label for="clg_id">College ID</label><br>
+    <input type="text" id="clg_id" name="clg_id"><br>
+    <h3>Enter Your Marks</h3>
+    <label for="phy">Physics</label><br>
+    <input type="number" id="phy" name="phy"><br>
+    <label for="chem">Chemistry</label><br>
+    <input type="number" id="chem" name="chem"><br>
+    <label for="math">Mathematics</label><br>
+    <input type="number" id="math" name="math"><br>
+    <label for="eng">English</label><br>
+    <input type="number" id="eng" name="eng"><br>
+    <label for="mrt">Marathi</label><br>
+    <input type="number" id="mrt" name="mrt"><br>
+    <input type="submit" value="Submit">
+</form>

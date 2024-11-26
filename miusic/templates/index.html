@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miusico</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    
+    h3 {
+        color: #2c1717;
+        text-align: center;
+    }
+    
+    .container {
+        max-width: 800px; /* Limits the width of the container */
+        margin: 0 auto;   /* Centers the container on the page */
+        padding: 20px;    /* Adds padding inside the container */
+        background-color: #fff; /* Background color inside the container */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    }
+    
+    form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    input[type="submit"] {
+        background: #5cb85c;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background: #4cae4c;
+    }
+    
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+    
+    li {
+        background: #dff0d8;
+        padding: 10px;
+        border: 1px solid #d6e9c6;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    </style>
+</head>
+
+<body>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1><i>Welcome to Miusico..🎵</i></h1>
+
+<div class="container">
+<h3>Add Musician</h3>
+    <!-- Form for Musician -->
+    <form action="{% url 'miusica' %}" method="post" >
+        {% csrf_token %}
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" required>
+
+        <label for="instrument">Instrument</label>
+        <input type="text" id="instrument" name="instrument" required>
+
+        <input type="submit" value="Submit Musician">
+    </form>
+</div>
+<br><br>
+<div class="container">
+    <h3>Add Album</h3>
+    <!-- Form for Album -->
+    <form action="{% url 'album' %}" method="post" >
+        {% csrf_token %}
+        <label for="artist">Artist</label>
+        <select id="artist" name="artist" required>
+            {% for musician in musicians %}
+            <option value="{{ musician.id }}">{{ musician.first_name }} {{ musician.last_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="name">Album Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="release_date">Release Date</label>
+        <input type="date" id="release_date" name="release_date" required>
+
+        <label for="num_stars">Number of Stars</label>
+        <input type="number" id="num_stars" name="num_stars" min="1" max="5" required>
+
+        <input type="submit" value="Submit Album">
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</html>
+<h1>Hello Iam demo File </h1>
+
+<a href="{% url 'about_us'%}">  About Us    </a><br>
+<a href="{% url 'contact_us'%}">  Contact Us   </a><br>
+<a href="{% url 'service'%}">  Our services  </a><br>
+<a href="{% url 'student'%}"> Student   </a><br>
+<a href="{% url 'employee'%}"> Employee   </a><br>
+
+
+<form action="{% url 'sum'%}" method="POST">
+    {% csrf_token %}
+    <label for="am">Amount</label><br>
+    <input type="text" id="fname" name="am"><br>
+    <label for="ir">Intrest Rate</label><br>
+    <input type="text" id="lname" name="ir"><br>
+    <label for="ye">Years</label><br>
+    <input type="text" id="lname" name="ye"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+</body>

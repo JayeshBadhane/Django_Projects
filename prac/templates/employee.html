@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome To Employee Page</h1>
+    <table>
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Employee Designation</th>
+        </tr>
+        {% for i in msg %}
+        <tr></tr>
+            <td><a href="{% url 'edit_emp' i.id%}">{{i.id}}  </a></td>
+            <td>{{i.empName}}</td>
+            <td>{{i.salary}}</td>
+            <td>{{i.designation}}</td>
+    
+        </tr>
+        {% endfor %}
+    </table>
+
+    <form action="{% url 'employeeData'%}" method="POST">
+        {% csrf_token %}
+        <label for="emp_Name">Employee Name</label><br>
+        <input type="text" id="ename" name="emp_Name"><br>
+        <label for="sal">Salary</label><br>
+        <input type="text" id="sal" name="sal"><br>
+        <label for="designation">Desingetion</label><br>
+        <input type="text" id="lname" name="designation"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    
+   
+</body>
+
+</html>
